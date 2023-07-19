@@ -1,0 +1,13 @@
+{% extends 'webkiosk/base_template.html' %} 
+{% block pagetitle%}Menu{% endblock %}
+
+{% block maincontent %}
+<h2>Menu</h2>
+<ol>
+    <!-- list of food records go here-->
+    {% for customer in customerlist %}
+    <li>{{ customer.lastname }}, {{customer.firstname}}: {{customer.address}}{{customer.city}} | <a href="{% url 'webkiosk:customer-detail' customer.id %}">Details</a> | <a href="{% url 'webkiosk:customer-edit' customer.id %}">Edit</a> |  <a href="{% url 'webkiosk:customer-delete' customer.id %}">Delete</a></li>
+    
+    {% endfor %}
+</ol>
+{% endblock %} 

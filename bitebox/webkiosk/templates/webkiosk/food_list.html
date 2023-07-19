@@ -1,0 +1,14 @@
+{% extends 'webkiosk/base_template.html' %} 
+{% block pagetitle%}Menu{% endblock %}
+
+{% block maincontent %}
+<h2>Menu</h2>
+<ol>
+    <!-- list of food records go here-->
+    {% for food in foodlist %}
+    <li>{{ food.name }} - Php{{food.price}} | <a href="{% url 'webkiosk:food-detail' food.id %}">Details</a> |
+    <a href="{% url 'webkiosk:food-update' food.id %}">Edit</a> | <a href="{% url 'webkiosk:food-delete' food.id %}">Delete</a></li>
+    
+    {% endfor %}
+</ol>
+{% endblock %} 

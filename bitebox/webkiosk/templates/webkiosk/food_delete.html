@@ -1,0 +1,17 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block pagetitle%}Delete Food{% endblock %}
+
+{% block mainnav%}{%endblock%}
+
+{% block maincontent%}
+<h2>Delete Food</h2>
+
+<form method = "post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete <b>{{food.name}}</b> ?</p>
+    <a href="{%url 'webkiosk:food-list'%}">Cancel</a>
+    <input type = "Submit" value="Yes">
+</form>
+
+{% endblock %}

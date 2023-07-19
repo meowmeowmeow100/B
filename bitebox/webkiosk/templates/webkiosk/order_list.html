@@ -1,0 +1,28 @@
+{% extends 'webkiosk/base_template.html' %} 
+{% block pagetitle%}Details{% endblock %}
+
+{% block maincontent %}
+<h2>Menu</h2>
+<ol>
+    <!-- list of food records go here-->
+    {% for order in orderlist %}
+    <li>
+        <br> ORDER, DATE, TIME {{order.orderdatetime}}
+        <br> NAME: {{order.food.name}}
+        <br> DESCRIPTION: {{order.food.description}}
+        <br> PRICE: {{order.food.price}}
+        <br> CUSTOMER NAME: {{order.customer.firstname}} {{order.customer.lastname}}
+        <br> CUSTOMER ADDRESS: {{order.customer.address}}, {{order.customer.city}}
+        <br>
+        <a href="{% url 'webkiosk:order-detail' order.id %}">Details</a> | 
+        <a href="{% url 'webkiosk:order-edit' order.id %}">Edit</a> |  
+        <a href="{% url 'webkiosk:order-delete' order.id %}">Delete</a></li> 
+    {% endfor %}
+</ol>
+{% endblock %} 
+
+
+<!--
+    <a href="{% url 'webkiosk:order-edit' order.id %}">Edit</a> |  
+        <a href="{% url 'webkiosk:order-delete' order.id %}">Delete</a></li>
+-->

@@ -1,0 +1,18 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block pagetitle%}{{formheading}}{% endblock %}
+
+{% block maincontent%}
+<h2>{{formheading}}</h2>
+
+<form method = "post">
+    {% csrf_token%} <!-- security feature in django-->
+    {{ form.as_ul }}
+    <input type = "submit" value = "Submit">
+</form>
+<ul>
+    {% for message in messages %}
+    <li>{{message}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
